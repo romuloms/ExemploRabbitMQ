@@ -27,12 +27,20 @@ public class Receptor {
 
         String message = new String(body, "UTF-8");
         System.out.println(" [x] Mensagem recebida: '" + message + "'");
-
+        
+        // REIMPRIMIR O PROMPT
+        // MANTER A INFORMAÇÃO EM UMA VARIÁVEL GLOBAL (PARA ACESSAR O ESTADO ATUAL DO PROMPT)
+        
+        
                         //(deliveryTag,               multiple);
         //channel.basicAck(envelope.getDeliveryTag(), false);
       }
     };
                       //(queue-name, autoAck, consumer);    
     channel.basicConsume(QUEUE_NAME, true,    consumer);
+    
+    
+    // CICLO DO EMISSOR
+    
   }
 }
