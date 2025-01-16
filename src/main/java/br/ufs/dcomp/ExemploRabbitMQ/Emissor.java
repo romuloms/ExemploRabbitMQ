@@ -6,20 +6,21 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class Emissor {
 
-  private final static String QUEUE_NAME = "minha-fila";
+  private final static String QUEUE_NAME = "first-queue";
 
   public static void main(String[] argv) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
-    factory.setHost("ip-da-instancia-da-aws"); // Alterar
-    factory.setUsername("usuário-do-rabbitmq-server"); // Alterar
-    factory.setPassword("senha-do-rabbitmq-server"); // Alterar
-    factory.setVirtualHost("/");    Connection connection = factory.newConnection();
+    factory.setHost("3.93.238.34");
+    factory.setUsername("admin");
+    factory.setPassword("password");
+    factory.setVirtualHost("/");    
+    Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
 
                       //(queue-name, durable, exclusive, auto-delete, params); 
     channel.queueDeclare(QUEUE_NAME, false,   false,     false,       null);
 
-    String message = "Olá!!!";
+    String message = "Heitor é lixo";
     
                     //  (exchange, routingKey, props, message-body             ); 
     channel.basicPublish("",       QUEUE_NAME, null,  message.getBytes("UTF-8"));
